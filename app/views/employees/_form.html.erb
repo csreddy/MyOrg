@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :bio %>
   <%= f.association :roles %>
+  <%= f.association :employees, :label => "Reports to" %>
    <%= f.input :email %>  
    <%= f.hint 'Use valid email address, please!' %>
    <%= f.input :avatar %>

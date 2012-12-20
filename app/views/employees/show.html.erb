@@ -29,6 +29,12 @@
 	  </dd>
 	  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
 	   <dd><%= @employee.email %></dd>
+ 	  <dt><strong><%= model_class.human_attribute_name(:reports_to) %>:</strong></dt>
+	  <% @manager = @employee.employees %>
+	     <% @manager.each do |m| %>
+	    <dd> <%= link_to m.name, employee_path(m) %></dd>
+	    <% end %>
+	
 	  </dl>
     </td>
   </tr>

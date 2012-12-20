@@ -1,0 +1,4 @@
+<% @manager = @employee.employees %>
+   <% @manager.each do |m| %>
+  <dd> <%= link_to m.name, employee_path(m) %></dd>
+  <% end %>

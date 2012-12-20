@@ -9,6 +9,7 @@
 	   <th><%= model_class.human_attribute_name(:picture) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:role) %></th>
+	   <th><%= model_class.human_attribute_name(:reports_to) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -24,7 +25,11 @@
 			<% @roles.each do |role| %>
 			<%= link_to role.title, role_path(role) %><br />
 			<% end %>
-       
+		</td>
+		<td> <% @manager = employee.employees %>
+  		  	<% @manager.each do |m| %>
+ 		   	<dd> <%= link_to m.name, employee_path(m) %></dd>
+ 		   	<% end %> </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_employee_path(employee), :class => 'btn btn-mini' %>
