@@ -1,0 +1,47 @@
+<%- model_class = Employee -%>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+		<%= image_tag avatar_url(@employee) %>
+		<!-- <%= image_tag @employee.gravatar_url %>
+		<%= image_tag @employee.avatar.url %> -->
+        <h4>
+			<%= @employee.name %>
+        </h4>
+    </td>
+    <td class="sidebar round">
+	  <dl class="dl-horizontal">
+	    <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+	    <dd><%= @employee.name %></dd>
+  	  <dt><strong><%= model_class.human_attribute_name(:bio) %>:</strong></dt>
+  	   <dd><%= @employee.bio %></dd>
+	    <dt><strong><%= model_class.human_attribute_name(:role) %>:</strong></dt>
+	    <dd>
+	  	<% @roles = @employee.roles %>
+	  	<% @roles.each do |role| %>
+	  	<%= link_to role.title, role_path(role) %><br />
+	  	<% end %>
+	  </dd>
+	  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+	   <dd><%= @employee.email %></dd>
+	  </dl>
+    </td>
+  </tr>
+</table>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              employees_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_employee_path(@employee), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              employee_path(@employee),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
