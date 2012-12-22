@@ -1,6 +1,7 @@
 <%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :bio %>
+  <%= f.association :department %>
   <%= f.association :roles %>
   <%= f.association :employees, :label => "Reports to" %>
    <%= f.input :email %>  

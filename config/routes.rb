@@ -1,4 +1,7 @@
 Myorg::Application.routes.draw do
+  resources :departments
+
+
   root :to => 'employees#index'
 
   resources :roles

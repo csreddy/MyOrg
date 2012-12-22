@@ -44,3 +44,5 @@ gem 'simple_form'
 gem 'hirb'
 gem 'gravtastic'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'populator'
+gem 'faker'
