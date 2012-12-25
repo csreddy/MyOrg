@@ -58,12 +58,7 @@
     </div>
 
     <div class="container-fluid">
-		
-		<form class="form-search">
-		  <input type="text" class="input-medium search-query">
-		  <button type="submit" class="btn">Search</button>
-		</form>
-		
+
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -80,12 +75,12 @@
           </div><!--/.well -->
         </div><!--/span-->
 		<div class="span9"> 
-		
-        <div class="navbar-inner">
-		<div class="span9"> 
-			
-          <%= bootstrap_flash %>
+		  <%= bootstrap_flash %>
+        <div class="navbar-inner">			 
+		<div class="span12"> 
+
           <%= yield %>
+		  
         </div>
       </div><!--/row-->
 

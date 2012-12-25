@@ -27,4 +27,20 @@ class Employee < ActiveRecord::Base
 
   belongs_to :department
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
+
+  self.per_page = 5
+  
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+  
+ 
+  
+ 
 end

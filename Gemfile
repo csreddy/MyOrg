@@ -39,10 +39,17 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-
+gem 'mysql2'
 gem 'simple_form'
 gem 'hirb'
 gem 'gravtastic'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'populator'
 gem 'faker'
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
+#gem 'arel', '~> 1.0.0.rc1'
+# gem "meta_where"
+gem 'meta_search' 
+#gem 'searchlogic'
+#gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'

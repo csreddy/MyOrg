@@ -1,9 +1,12 @@
 class EmployeesController < ApplicationController
+  helper_method :sort_column, :sort_direction
+  
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
-    @roles = Role.all
+   @search = Employee.metasearch(params[:search])
+   @employees = @search.order(sort_column + " " + sort_direction).paginate(:page => params[:page])
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @employees }
@@ -13,6 +16,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
+     @search = Employee.metasearch(params[:search])
     @employee = Employee.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +28,7 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   # GET /employees/new.json
   def new
+    @search = Employee.metasearch(params[:search])
     @employee = Employee.new
 
     respond_to do |format|
@@ -34,12 +39,14 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1/edit
   def edit
+    @search = Employee.metasearch(params[:search])
     @employee = Employee.find(params[:id])
   end
 
   # POST /employees
   # POST /employees.json
   def create
+    @search = Employee.metasearch(params[:search])
     @employee = Employee.new(params[:employee])
 
     respond_to do |format|
@@ -80,4 +87,15 @@ class EmployeesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+    def sort_column
+      Employee.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+  
 end

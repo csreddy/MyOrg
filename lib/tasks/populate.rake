@@ -1,14 +1,17 @@
 namespace :db do
   desc "Erase and fill database"
-  task :add_roles => :environment do
+  task :populate => :environment do
     require 'populator'
     require 'faker'
     
+   Rake::Task["db:add_depts"].invoke
+    Employee.delete_all
     Role.delete_all
-    roles = Array["Developer", "QA", "Manager", "Director", "Product Manager", "Sales Engineer", "Vice President"]
+  #  roles = Array["Developer", "QA", "Manager", "Director", "Product Manager", "Sales Engineer", "Vice President"]
     Role.populate(7) do |role|      
-    role.title = Faker::Name.title  
+    role.title = ["Developer", "QA", "Manager", "Director", "Product Manager", "Sales Engineer", "Vice President"]  
   end
+   Rake::Task["db:add_employees"].invoke    
 end
 
 
@@ -43,7 +46,7 @@ end
     
     @employees = Employee.all
     for employee in @employees do
-      employee.reportsto =  Employee.find(1+rand(9)).name
+      employee.reportsto =  Employee.find(1+rand(6)).name
     end
  
 end

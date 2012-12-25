@@ -1,8 +1,11 @@
 class RolesController < ApplicationController
+ helper_method :sort_column, :sort_direction
+ 
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all
+    @search = Role.metasearch(params[:search])
+    @roles = @search.order(sort_column + " " + sort_direction).paginate(:page => params[:page])
     @employees = Employee.all
     respond_to do |format|
       format.html # index.html.erb
@@ -82,4 +85,14 @@ class RolesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+    def sort_column
+      Role.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end

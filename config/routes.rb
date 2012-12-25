@@ -1,13 +1,12 @@
 Myorg::Application.routes.draw do
-  resources :departments
-
 
   root :to => 'employees#index'
 
-  resources :roles
-  
+  resources :roles  
 
-  resources :employees
+  resources :employees 
+     
+  resources :departments
 
 
   # The priority is based upon order of creation:

@@ -1,13 +1,14 @@
 <%- model_class = Department -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<div class="page-header" style="width: 100%; overflow: hidden;">
+  <div id="title" style="width: 300px; float: left;"><h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1></div>
+  <div :id="search" style="margin-left: 300px;"><%= render :partial => 'search' %></div>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= sortable 'id' %></th>
+      <th><%= sortable 'name' %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,7 +17,6 @@
       <tr>
         <td><%=  department.id %></td>
         <td><%= link_to department.name, department_path(department) %></td>
-        <td><%=l department.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_department_path(department), :class => 'btn btn-mini' %>
@@ -30,7 +30,7 @@
     <% end %>
   </tbody>
 </table>
-
+ <%= will_paginate @department, :class => 'pagination' %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_department_path,
             :class => 'btn btn-primary' %>

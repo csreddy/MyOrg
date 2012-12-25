@@ -1,8 +1,11 @@
 class DepartmentsController < ApplicationController
+ helper_method :sort_column, :sort_direction
+ 
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    @search  = Department.metasearch(params[:search])
+    @departments = @search.order(sort_column + " " + sort_direction).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +16,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
+    @search = Department.search(params[:search])
     @department = Department.find(params[:id])
 
     respond_to do |format|
@@ -75,9 +79,21 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
     @department.destroy
 
+    
+
     respond_to do |format|
       format.html { redirect_to departments_url }
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+    def sort_column
+      Department.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end

@@ -1,0 +1,11 @@
+
+<form class="form-search"  align='right'>
+		<%= form_for @search, :url => roles_path, :html => {:method => :get} do |f| %>
+		<p>
+			<%= f.text_field :title_contains %>
+			<%= f.submit 'Search' , :class => 'btn btn-primary' %>
+		</p>	
+		<% end %>
+	<!--  <input type="text" class="input-medium search-query">
+	  <button type="submit" class="btn">Search</button> -->
+	</form>
