@@ -1,16 +1,17 @@
 <%- model_class = Employee -%>
 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+	<h4><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "#{model_class.model_name.human} info") %></h4>
 </div>
 
 <table class="profile" summary="Profile information">
+	  <col width="20%" />
   <tr>
     <td class="main">
-		<%= image_tag avatar_url(@employee) %>
+		<%= image_tag avatar_url_show_page(@employee), :class => 'img-polaroid' %>
 		<!-- <%= image_tag @employee.gravatar_url %>
 		<%= image_tag @employee.avatar.url %> -->
-        <h4>
+        <h4 align="center">
 			<%= @employee.name %>
         </h4>
     </td>
@@ -46,6 +47,28 @@
 	    <dd> <%= link_to m.name, employee_path(m) %></dd>
 	    <% end %>
 	  </dl>
+   <dl class="dl-horizontal">
+	  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+    <dd> 
+		<% if @employee.address.nil? %>
+		<% then %>
+		<i><%= "address not provided" %></i>
+		<% else %>
+		<%= @employee.address.street_name %>
+		#<%= @employee.address.apt if !@employee.address.apt.empty?  %>		
+		<%= @employee.address.city %></br>
+		<%= @employee.address.state %>,
+		<%= @employee.address.zip %>
+		<% end %>
+	</dd> 	  
+  </dl> 
+  <dl class="dl-horizontal">
+ <dt><strong><%= model_class.human_attribute_name(:phones) %>:</strong></dt>
+ <% @phones = @employee.phones %>
+    <% @phones.each do |p| %>
+   <dd><%= p.phone_type %>:<%= p.phone_number %></dd>
+   <% end %>
+ </dl>
     </td>
   </tr>
 </table>

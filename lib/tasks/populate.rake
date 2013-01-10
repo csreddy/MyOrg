@@ -14,7 +14,7 @@ namespace :db do
       Employee.populate(1..3) do |emp|      
       emp.name = Faker::Name.name  
       emp.bio = Populator.sentences(2..10)
-      emp.role_ids = Role.last.id
+    #  emp.role_ids = Role.last.id
       emp.department_id = Department.find(1+rand(9)).id
       emp.email = Faker::Internet.email
     end
@@ -26,6 +26,17 @@ namespace :db do
   #  role.title = ["Developer", "QA", "Manager", "Director", "Product Manager", "Sales Engineer", "Vice President"]  
   #end
   # Rake::Task["db:add_employees"].invoke    
+end
+
+task :add_roles => :environment do
+  
+   Role.delete_all
+   @roles = Array["Developer", "QA Engineer", "Lead Engineer","QA Manager","Manager", "IT Admin", "Director", "Product Manager", "Project Manager", "Sales Engineer", "Vice President", "Founder", "Chief Financial Officer", "Senior Vice President", "Chief Marketing Officer", "CEO"]
+   @roles.each do |role|
+     r = Role.create :title => role
+     r.save   
+   end
+  
 end
 
 

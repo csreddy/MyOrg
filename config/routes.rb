@@ -1,10 +1,14 @@
 Myorg::Application.routes.draw do
 
+  get "phone/add_phone"
+
   root :to => 'employees#index'
 
   resources :roles  
 
-  resources :employees 
+  resources :employees do
+    get :autocomplete_employee_name, :on => :collection
+  end
      
   resources :departments
 

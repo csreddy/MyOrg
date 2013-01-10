@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   helper_method :sort_column, :sort_direction
+  autocomplete :employee, :name
   
   # GET /employees
   # GET /employees.json
@@ -30,7 +31,8 @@ class EmployeesController < ApplicationController
   def new
     @search = Employee.metasearch(params[:search])
     @employee = Employee.new
-
+    @employee.build_address
+    @employee.phones.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @employee }
@@ -41,6 +43,8 @@ class EmployeesController < ApplicationController
   def edit
     @search = Employee.metasearch(params[:search])
     @employee = Employee.find(params[:id])
+     @employee.build_address
+     @employee.phones.build
   end
 
   # POST /employees
@@ -54,6 +58,8 @@ class EmployeesController < ApplicationController
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render json: @employee, status: :created, location: @employee }
       else
+         @employee.build_address
+         @employee.phones.build
         format.html { render action: "new" }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end

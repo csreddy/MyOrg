@@ -7,7 +7,7 @@ class Employee < ActiveRecord::Base
             #  http://s3.amazonaws.com/twitvid-channel-avatars/4f8daf56e6438.1.jpg  
             #  http://www.techinasia.com/techinasia/wp-content/uploads/2009/11/facebook-avatar.png
    
-  attr_accessible :name, :role, :role_ids, :email, :bio, :avatar, :employee_ids, :department_id
+  attr_accessible :name, :role, :role_ids, :email, :bio, :avatar, :employee_ids, :address, :department_id, :address_attributes, :phones_attributes
   validates :name, 
             :presence => true, 
             :format => { :with => /^[^0-9`!@#\$%\^&*+_=]+$/,
@@ -26,12 +26,18 @@ class Employee < ActiveRecord::Base
                           :association_foreign_key => "employee_b_id"
 
   belongs_to :department
+  has_one :address,  :dependent => :destroy
+  has_many :phones, :dependent => :destroy
+  accepts_nested_attributes_for :address, :reject_if => lambda { |a| a[:street_name].blank? },  :allow_destroy => true
+  accepts_nested_attributes_for :phones, :reject_if => lambda { |p| p[:phone_number].blank? }, :allow_destroy => true
+  
+  
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
 
-  self.per_page = 5
+  self.per_page = 10
   
-
+  
   def self.search(search)
     if search
       find(:all, :conditions => ['name LIKE ?', "%#{search}%"])

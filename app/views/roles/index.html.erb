@@ -1,7 +1,9 @@
 <%- model_class = Role -%>
+
 <div class="page-header" style="width: 100%; overflow: hidden;">
-  <div id="title" style="width: 300px; float: left;"><h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1></div>
+  <div id="title" style="width: 300px; float: left;"><h4><%=t '.title', :default => model_class.model_name.human.pluralize %></h4></div>
   <div :id="search" style="margin-left: 300px;"><%= render :partial => 'search' %></div>
+ Total count:  <%= Role.count %> 
 </div>
 
 <table class="table table-striped">

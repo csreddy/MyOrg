@@ -103,6 +103,8 @@ GEM
       activesupport (= 3.2.9)
       bundler (~> 1.0)
       railties (= 3.2.9)
+    rails3-jquery-autocomplete (1.0.10)
+      rails (~> 3.0)
     railties (3.2.9)
       actionpack (= 3.2.9)
       activesupport (= 3.2.9)
@@ -160,6 +162,7 @@ DEPENDENCIES
   paperclip!
   populator
   rails (= 3.2.9)
+  rails3-jquery-autocomplete
   sass-rails (~> 3.2.3)
   simple_form
   sqlite3
