@@ -15,3 +15,7 @@
 //= require twitter/bootstrap
 //= require autocomplete-rails
 //= require_tree .
+
+
+$('#employee_dob').datepicker();
+$('#employee_joined_on').datepicker();

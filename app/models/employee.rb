@@ -7,7 +7,7 @@ class Employee < ActiveRecord::Base
             #  http://s3.amazonaws.com/twitvid-channel-avatars/4f8daf56e6438.1.jpg  
             #  http://www.techinasia.com/techinasia/wp-content/uploads/2009/11/facebook-avatar.png
    
-  attr_accessible :name, :role, :role_ids, :email, :bio, :avatar, :employee_ids, :address, :department_id, :address_attributes, :phones_attributes
+  attr_accessible :name, :role, :role_ids, :email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes
   validates :name, 
             :presence => true, 
             :format => { :with => /^[^0-9`!@#\$%\^&*+_=]+$/,

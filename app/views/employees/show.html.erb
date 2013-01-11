@@ -5,13 +5,13 @@
 </div>
 
 <table class="profile" summary="Profile information">
-	  <col width="20%" />
+	  <col width="25%" />
   <tr>
-    <td class="main">
+    <td class="main" valign="top">
 		<%= image_tag avatar_url_show_page(@employee), :class => 'img-polaroid' %>
 		<!-- <%= image_tag @employee.gravatar_url %>
 		<%= image_tag @employee.avatar.url %> -->
-        <h4 align="center">
+        <h4 align="left">
 			<%= @employee.name %>
         </h4>
     </td>
@@ -23,6 +23,15 @@
   	  <dt><strong><%= model_class.human_attribute_name(:bio) %>:</strong></dt>
   	   <dd><%= @employee.bio %></dd>
    </dl>
+  <dl class="dl-horizontal">
+	  <dt><strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong></dt>
+   <dd><%= dob_date %></dd>
+</dl>
+  <dl class="dl-horizontal">
+	  <dt><strong><%= model_class.human_attribute_name(:joined_on) %>:</strong></dt>
+   <dd><%= joined_on_date %></dd>
+</dl>
+   
    <dl class="dl-horizontal">
    	  <dt><strong><%= model_class.human_attribute_name(:department) %>:</strong></dt>
    	   <dd><%= employee_department(@employee) %></dd>
@@ -38,7 +47,7 @@
   </dl>
 	  <dl class="dl-horizontal">
 	  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-	   <dd><%= @employee.email %></dd>
+	   <dd><%= mail_to @employee.email %></dd>
    </dl>
 	   <dl class="dl-horizontal">
  	  <dt><strong><%= model_class.human_attribute_name(:reports_to) %>:</strong></dt>
@@ -49,24 +58,13 @@
 	  </dl>
    <dl class="dl-horizontal">
 	  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-    <dd> 
-		<% if @employee.address.nil? %>
-		<% then %>
-		<i><%= "address not provided" %></i>
-		<% else %>
-		<%= @employee.address.street_name %>
-		#<%= @employee.address.apt if !@employee.address.apt.empty?  %>		
-		<%= @employee.address.city %></br>
-		<%= @employee.address.state %>,
-		<%= @employee.address.zip %>
-		<% end %>
-	</dd> 	  
+	 <dd> <%= employee_address(@employee) %></dd>	  
   </dl> 
   <dl class="dl-horizontal">
  <dt><strong><%= model_class.human_attribute_name(:phones) %>:</strong></dt>
  <% @phones = @employee.phones %>
     <% @phones.each do |p| %>
-   <dd><%= p.phone_type %>:<%= p.phone_number %></dd>
+   <dd><%= p.phone_number %> <small>(<%= p.phone_type %>)</small></dd>
    <% end %>
  </dl>
     </td>

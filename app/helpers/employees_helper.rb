@@ -5,6 +5,14 @@ module EmployeesHelper
    end
   end
   
+  def dob_date
+    @employee.dob.strftime("%m-%d-%Y") unless  @employee.dob.nil?
+  end
+  
+  def joined_on_date
+    @employee.joined_on.strftime("%m-%d-%Y") unless  @employee.joined_on.nil?
+  end
+  
   def us_states
       [
         ['Alabama', 'AL'],

@@ -1,16 +1,19 @@
 <%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name, :input_html => { :class => 'special' } %>
+  <%= f.input :name %>
   <%= f.input :bio, :input_html => { :rows => 5, :class => 'input-xxlarge' } %>
+  <%= f.input :dob, :as => :string, :label => "Date of birth", :input_html => { :class => 'span3' }%>
+  <%= f.input :joined_on, :as => :string, :input_html => { :class => 'span3' } %>
   <%= f.association :department %>
   <%= f.association :roles %>
   <%= f.association :employees, :label => "Reports to" %>
-  <%= f.input :email, :hint => 'Use valid email address, please!' %>  
+ <small> <%= f.input :email, :hint => 'Use valid email address' %></small>
+  
   <div class="control-group">
   <label class="control-label" for="address">Address</label>
   <div class="controls">
   	<%= f.simple_fields_for :address do |a| %>
 	<%= a.input_field :street_name, :placeholder => 'Street', style: "margin-bottom:3px" %>
-		<%= a.input_field :apt, :placeholder => 'Apt', class: 'span2', style: "margin-bottom:3px" %><br/>
+		<%= a.input_field :apt, :placeholder => 'Apt/Suite', class: 'span2', style: "margin-bottom:3px" %><br/>
   		<%= a.input_field :city, :placeholder => 'City', style: "margin-bottom:3px" %><br/>
   		<%= a.input_field :state, :collection => us_states, :include_blank => false, :prompt => "Select state", class: 'span3', style: "margin-bottom:3px" %>	
   		<%= a.input_field :zip, class: 'span2', :placeholder => 'Zip code', style: "margin-bottom:3px"  %>
@@ -28,7 +31,7 @@
 </div>
 </div>
 
-   <%= f.input :avatar %>
+    <%= f.input :avatar %>
    
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

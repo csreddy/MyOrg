@@ -28,7 +28,7 @@ module ApplicationHelper
 
   def employee_department(employee)
     if employee.department_id.nil?
-     content_tag :span , "not assigned", :class => 'label label-info'
+     content_tag :span , "not assigned", :class => 'label'
     else
       link_to employee.department.name, department_path(employee.department)
   end
@@ -56,6 +56,18 @@ def employee_roles(employee)
      role.title
     end
   end
+end
+
+
+def employee_address(employee)
+	 if employee.address.nil? 
+	  content_tag :span , "address not provided", :class => 'label' 
+	 else 
+      employee.address.street_name 
+      employee.address.city 
+      employee.address.state
+      employee.address.zip 
+end 
 end
 
 def autocomplete
