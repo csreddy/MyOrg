@@ -13,11 +13,13 @@
   <div class="controls">
   	<%= f.simple_fields_for :address do |a| %>
 	<%= a.input_field :street_name, :placeholder => 'Street', style: "margin-bottom:3px" %>
-		<%= a.input_field :apt, :placeholder => 'Apt/Suite', class: 'span2', style: "margin-bottom:3px" %><br/>
-  		<%= a.input_field :city, :placeholder => 'City', style: "margin-bottom:3px" %><br/>
-  		<%= a.input_field :state, :collection => us_states, :include_blank => false, :prompt => "Select state", class: 'span3', style: "margin-bottom:3px" %>	
-  		<%= a.input_field :zip, class: 'span2', :placeholder => 'Zip code', style: "margin-bottom:3px"  %>
+	<%= a.input_field :apt, :placeholder => 'Apt/Suite', class: 'span2', style: "margin-bottom:3px" %><br/>
+  	<%= a.input_field :city, :placeholder => 'City', style: "margin-bottom:3px" %><br/>
+  	<%= a.input_field :state, :collection => us_states, :include_blank => false, :prompt => "Select state", class: 'span3', style: "margin-bottom:3px" %>	
+  	<%= a.input_field :zip, class: 'span2', :placeholder => 'Zip/Pin code', style: "margin-bottom:3px"  %><br/>
+	<%= a.input_field :country, class: 'span3', :selected => ["United States"], :priority => [ "United States" ],  style: "margin-bottom:3px"  %>
   	<% end %>
+	
 </div>
 </div>
 

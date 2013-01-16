@@ -11,10 +11,8 @@
 </dl>
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:employees) %>:</strong></dt>
-  <% @employees = @department.employees %>
-  <% @employees.each do |employee| %>
-  <dd><%= link_to employee.name, employee_path(employee) %></dd>
-  <% end %>
+  <%= render :partial => 'employees' %>
+
 </dl>
 
 <div class="form-actions">

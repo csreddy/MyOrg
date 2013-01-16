@@ -39,10 +39,8 @@
 	   <dl class="dl-horizontal">
 	    <dt><strong><%= model_class.human_attribute_name(:role) %>:</strong></dt>
 	    <dd>
-	  	<% @roles = @employee.roles %>
-	  	<% @roles.each do |role| %>
-	  	<%= link_to role.title, role_path(role) %><br />
-	  	<% end %>
+	  	<%= render :partial => 'roles' %>
+
 	  </dd>
   </dl>
 	  <dl class="dl-horizontal">
@@ -51,21 +49,19 @@
    </dl>
 	   <dl class="dl-horizontal">
  	  <dt><strong><%= model_class.human_attribute_name(:reports_to) %>:</strong></dt>
-	  <% @manager = @employee.employees %>
-	     <% @manager.each do |m| %>
-	    <dd> <%= link_to m.name, employee_path(m) %></dd>
-	    <% end %>
+	   <%= render :partial => 'manager' %>
+
 	  </dl>
    <dl class="dl-horizontal">
 	  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-	 <dd> <%= employee_address(@employee) %></dd>	  
+	 <dd>
+		 <%= render :partial => 'address' %>
+	 </dd>	  
   </dl> 
   <dl class="dl-horizontal">
  <dt><strong><%= model_class.human_attribute_name(:phones) %>:</strong></dt>
- <% @phones = @employee.phones %>
-    <% @phones.each do |p| %>
-   <dd><%= p.phone_number %> <small>(<%= p.phone_type %>)</small></dd>
-   <% end %>
+ <%= render :partial => 'phones' %>
+
  </dl>
     </td>
   </tr>

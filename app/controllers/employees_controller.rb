@@ -14,6 +14,7 @@ class EmployeesController < ApplicationController
     end
   end
 
+
   # GET /employees/1
   # GET /employees/1.json
   def show
@@ -43,7 +44,12 @@ class EmployeesController < ApplicationController
   def edit
     @search = Employee.metasearch(params[:search])
     @employee = Employee.find(params[:id])
-     @employee.build_address
+     if !@employee.address.nil? then
+        @employee.address
+      else
+        @employee.build_address
+    end    
+    
      @employee.phones.build
   end
 

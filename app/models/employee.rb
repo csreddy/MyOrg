@@ -1,7 +1,28 @@
+# == Schema Information
+#
+# Table name: employees
+#
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  role                :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  email               :string(255)
+#  bio                 :text
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  reportsto           :string(255)
+#  department_id       :integer
+#  joined_on           :date
+#  dob                 :date
+#
+
 class Employee < ActiveRecord::Base
   include Gravtastic
   gravtastic  :default => "http://cdn1.iconfinder.com/data/icons/dragon/128/User.png",
-              :size => 160
+              :size => 120
               
             # http://cdn1.iconfinder.com/data/icons/dragon/128/User.png  
             #  http://s3.amazonaws.com/twitvid-channel-avatars/4f8daf56e6438.1.jpg  
@@ -32,11 +53,12 @@ class Employee < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :reject_if => lambda { |p| p[:phone_number].blank? }, :allow_destroy => true
   
   
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" , :stamp => "20x20>"}
   
 
   self.per_page = 10
   
+
   
   def self.search(search)
     if search
@@ -46,7 +68,6 @@ class Employee < ActiveRecord::Base
     end
   end
   
- 
   
  
 end

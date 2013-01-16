@@ -6,7 +6,7 @@ module EmployeesHelper
   end
   
   def dob_date
-    @employee.dob.strftime("%m-%d-%Y") unless  @employee.dob.nil?
+    @employee.dob.strftime("%m-%d-%Y") unless  @employee.dob.nil? 
   end
   
   def joined_on_date
@@ -66,7 +66,8 @@ module EmployeesHelper
         ['Washington', 'WA'],
         ['West Virginia', 'WV'],
         ['Wisconsin', 'WI'],
-        ['Wyoming', 'WY']
+        ['Wyoming', 'WY'],
+        ['Other', 'other']
       ]
   end
 end

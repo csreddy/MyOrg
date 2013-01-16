@@ -1,0 +1,4 @@
+<% @employees = @department.employees %>
+  <% @employees.each do |employee| %>
+  <dd><%= link_to employee.name, employee_path(employee) %></dd>
+  <% end %>

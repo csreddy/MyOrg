@@ -1,0 +1,4 @@
+<% @phones = @employee.phones %>
+    <% @phones.each do |p| %>
+   <dd><%= p.phone_number %> <small>(<%= p.phone_type %>)</small></dd>
+   <% end %>

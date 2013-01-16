@@ -10,10 +10,8 @@
   <dd><%= @role.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:employees) %>:</strong></dt>
   <dd>	
-	<% @employees = @role.employees %>
-	<% @employees.each do |employee| %>
-	<%= link_to employee.name, employee_path(employee) %><br/>
-	<% end %>
+	<%= render :partial => 'roles' %>
+
 </dd>
 </dl>
 

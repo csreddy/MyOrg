@@ -1,5 +1,9 @@
 Myorg::Application.routes.draw do
 
+  get "addresses/show_map"
+
+  get "employees/show_map"
+
   get "phone/add_phone"
 
   root :to => 'employees#index'

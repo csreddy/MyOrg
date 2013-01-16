@@ -55,3 +55,6 @@ gem 'meta_search'
 #gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem 'rails3-jquery-autocomplete'
 gem 'bootstrap-datepicker-rails'
+gem 'annotate', ">=2.5.0"
+gem 'gmaps4rails'
+gem 'country_select'

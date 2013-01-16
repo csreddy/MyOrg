@@ -17,6 +17,11 @@ namespace :db do
     #  emp.role_ids = Role.last.id
       emp.department_id = Department.find(1+rand(9)).id
       emp.email = Faker::Internet.email
+      emp.joined_on = Time.at(rand * Time.now.to_i).strftime("%m-%d-%Y")
+      emp.dob = Time.at(rand * Time.now.to_i).strftime("%m-%d-%Y")
+    #  emp.phones.create(:phone_type => 'Home', :phone_number => Faker::PhoneNumber.phone_number)
+    #  emp.phones.create(:phone_type => 'Mobile', :phone_number => Faker::PhoneNumber.phone_number)
+     
     end
         
     end
@@ -27,6 +32,33 @@ namespace :db do
   #end
   # Rake::Task["db:add_employees"].invoke    
 end
+
+task :add_addresses => :environment do 
+  require 'populator'
+  require 'faker'
+ 
+  employee_ids = []
+  Employee.all.each do |e|
+      employee_ids << e.id
+  end
+  Employee.all.each do |a|
+    address = Address.create(:employee_id => Employee.find(a.id), 
+    :street_name =>  Faker::Address.street_address,
+    :apt => Faker::Address.building_number,
+    :city => Faker::Address.city,
+    :state => Faker::Address.state_abbr,
+    :zip => Faker::Address.zip_code
+    )
+   # a.employee_id = Employee.find(a.id)
+   # a.street_name = Faker::Address.street_address
+   # a.apt = Faker::Address.building_number
+   # a.city = Faker::Address.city
+   # a.state = Faker::Address.state_abbr
+   # a.zip = Faker::Address.zip_code
+  end
+  
+end
+
 
 task :add_roles => :environment do
   

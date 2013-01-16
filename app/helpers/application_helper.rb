@@ -63,10 +63,10 @@ def employee_address(employee)
 	 if employee.address.nil? 
 	  content_tag :span , "address not provided", :class => 'label' 
 	 else 
-      employee.address.street_name 
-      employee.address.city 
-      employee.address.state
-      employee.address.zip 
+     employee.address.street_name
+     employee.address.city 
+     employee.address.state
+     employee.address.zip 
 end 
 end
 

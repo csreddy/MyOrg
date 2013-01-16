@@ -35,7 +35,6 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
-	 <%= javascript_include_tag "bootstrap-datepicker.js" %>
   </head>
   <body>
 
@@ -53,6 +52,7 @@
               <li><%= link_to "Employees", employees_path  %></li>
               <li><%= link_to "Roles", roles_path  %></li>
 			  <li><%= link_to "Departments", departments_path  %></li>
+			  <li><%= link_to "Map View",  addresses_show_map_path  %></li>
               <li><%= link_to "Org Chart", "#"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -96,7 +96,9 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-
+     <%= stylesheet_link_tag "gmaps4rails", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	 <%= javascript_include_tag "bootstrap-datepicker.js" %>
+	<%= yield :scripts %>
   </body>
 </html>

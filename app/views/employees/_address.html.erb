@@ -1,0 +1,11 @@
+<% if @employee.address.nil? %>
+		<% then %>
+		<span class="label"><%= "address not provided" %></span>
+		<% else %>
+		<%= @employee.address.street_name %>
+		<%= @employee.address.apt if !@employee.address.apt.empty?  %><br/>
+		<%= @employee.address.city %>,
+		<%= @employee.address.state %>
+		<%= @employee.address.zip %><br/>
+		<%= @employee.address.country %>
+		<% end %>
