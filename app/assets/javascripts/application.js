@@ -17,5 +17,6 @@
 //= require_tree .
 
 
-$('#employee_dob').datepicker();
-$('#employee_joined_on').datepicker();
+$('#employee_dob').datepicker({"format": "yyyy-mm-dd", "autoclose": true});
+
+$('#employee_joined_on').datepicker({"format": "yyyy-mm-dd", "autoclose": true});

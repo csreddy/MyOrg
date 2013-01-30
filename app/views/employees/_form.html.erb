@@ -1,14 +1,16 @@
 <%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :bio, :input_html => { :rows => 5, :class => 'input-xxlarge' } %>
-  <%= f.input :dob, :as => :string, :label => "Date of birth", :input_html => { :class => 'span3' }%>
+  <%= f.input :dob, :as => :string, :label => "Date of birth", :input_html => { :class => 'span3' } %>
   <%= f.input :joined_on, :as => :string, :input_html => { :class => 'span3' } %>
   <%= f.association :department %>
   <%= f.association :roles %>
   <%= f.association :employees, :label => "Reports to" %>
- <small> <%= f.input :email, :hint => 'Use valid email address' %></small>
+  <%= f.input :email, :label => "Work Email", :placeholder => 'Use valid email address' %>
+  <%= f.input :personal_email, :placeholder => 'Use valid email address' %>
   
   <div class="control-group">
+	  <%= @employee.address.validate_address unless Employee.new.present? %>
   <label class="control-label" for="address">Address</label>
   <div class="controls">
   	<%= f.simple_fields_for :address do |a| %>

@@ -20,6 +20,8 @@
 #
 
 class Employee < ActiveRecord::Base
+ 
+  
   include Gravtastic
   gravtastic  :default => "http://cdn1.iconfinder.com/data/icons/dragon/128/User.png",
               :size => 120
@@ -28,7 +30,8 @@ class Employee < ActiveRecord::Base
             #  http://s3.amazonaws.com/twitvid-channel-avatars/4f8daf56e6438.1.jpg  
             #  http://www.techinasia.com/techinasia/wp-content/uploads/2009/11/facebook-avatar.png
    
-  attr_accessible :name, :role, :role_ids, :email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes
+  attr_accessible :name, :role, :role_ids, :email, :personal_email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes
+  
   validates :name, 
             :presence => true, 
             :format => { :with => /^[^0-9`!@#\$%\^&*+_=]+$/,
@@ -39,6 +42,11 @@ class Employee < ActiveRecord::Base
               :presence => true,   
               :uniqueness => true,   
               :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }  
+  
+  
+  # validates :personal_email,   
+  #           :uniqueness => true,   
+  #           :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }              
                                              
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :employees, 
@@ -56,7 +64,7 @@ class Employee < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" , :stamp => "20x20>"}
   
 
-  self.per_page = 10
+  self.per_page = 25
   
 
   

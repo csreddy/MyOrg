@@ -58,3 +58,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'annotate', ">=2.5.0"
 gem 'gmaps4rails'
 gem 'country_select'
+gem 'json'
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
