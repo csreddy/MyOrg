@@ -1,6 +1,4 @@
-
-		
- 	     <% if @employee.manager.nil? %>
+ <% if @employee.manager.nil? %>
 	<span class="label label-info"> <%= "not assigned" %></span>
 	 <% else %>
 	<dd>	<%= link_to @employee.manager.name, employee_path(@employee) %></dd>
