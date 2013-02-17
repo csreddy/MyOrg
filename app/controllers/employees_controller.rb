@@ -18,12 +18,13 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
-     @search = Employee.metasearch(params[:search])
-    @employee = Employee.find(params[:id])
-
+     @search = Employee.metasearch(params[:search]) 
+    @employee = Employee.find(params[:id]) 
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @employee }
+      format.xml
     end
   end
 
@@ -79,7 +80,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.update_attributes(params[:employee])
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to @employee, notice: @employee.name.to_s + ' was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -95,9 +96,42 @@ class EmployeesController < ApplicationController
     @employee.destroy
 
     respond_to do |format|
-      format.html { redirect_to employees_url }
+      format.html { redirect_to employees_url, notice: @employee.name.to_s + 'was successfully removed.' }
       format.json { head :no_content }
     end
+  end
+  
+  
+  def chart
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Year' ) 
+    data_table.new_column('number', 'Sales') 
+    data_table.new_column('number', 'Expenses') 
+
+    # Add Rows and Values 
+    data_table.add_rows([ 
+      ['2004', 1000, 400], 
+      ['2005', 1170, 460], 
+      ['2006', 660, 1120], 
+      ['2007', 1030, 540] 
+    ])
+    
+    option = { width: 400, height: 240, title: 'Company Performance' }
+    @chart = GoogleVisualr::Interactive::AreaChart.new(data_table, option)
+  end
+  
+  def org_chart
+    data_table = GoogleVisualr::DataTable.new
+      data_table.new_column('string', 'Name'   )
+      data_table.new_column('string', 'Manager')
+      data_table.new_column('string', 'ToolTip')
+      @managers = Employee.find(:all)
+      @managers.each do |m|
+        data_table.add_rows( [[{:v => m.name, :f => m.name+'<div style="color:red; font-style:italic">'+get_roles_title(m)+'</div>'}, get_manager_info(m), m.name]])        
+      end
+ 
+      opts   = { :allowHtml => true }
+      @chart = GoogleVisualr::Interactive::OrgChart.new(data_table, opts)
   end
   
   private
@@ -109,5 +143,19 @@ class EmployeesController < ApplicationController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
+    
+    def get_managers
+       @managers = Employee.find(:all, :group => "manager_id")
+    end
+    
+    def get_manager_info(employee)
+     # @employee = Employee.find(params[:id])
+       employee.manager.nil? ? "" : employee.manager.name
+     
+    end
+  
+    def get_roles_title(employee)
+     employee.roles.empty? ? "no role" : employee.roles.map {|r| r.title.to_s.inspect}.join(",").gsub("\"", "")
+  end
   
 end

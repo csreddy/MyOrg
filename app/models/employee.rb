@@ -30,7 +30,7 @@ class Employee < ActiveRecord::Base
             #  http://s3.amazonaws.com/twitvid-channel-avatars/4f8daf56e6438.1.jpg  
             #  http://www.techinasia.com/techinasia/wp-content/uploads/2009/11/facebook-avatar.png
    
-  attr_accessible :name, :role, :role_ids, :email, :personal_email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes
+  attr_accessible :name, :role, :role_ids, :email, :personal_email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes, :manager_id
   
   validates :name, 
             :presence => true, 
@@ -49,10 +49,15 @@ class Employee < ActiveRecord::Base
   #           :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }              
                                              
   has_and_belongs_to_many :roles
-  has_and_belongs_to_many :employees, 
-                          :join_table => "employees_connections",
-                          :foreign_key => "employee_a_id",
-                          :association_foreign_key => "employee_b_id"
+  has_many :subordinates, class_name: "Employee",
+                            foreign_key: "manager_id"
+ 
+  belongs_to :manager, class_name: "Employee"
+ 
+ # has_and_belongs_to_many :employees, 
+  #                        :join_table => "employees_connections",
+   #                       :foreign_key => "employee_a_id",
+    #                      :association_foreign_key => "employee_b_id"
 
   belongs_to :department
   has_one :address,  :dependent => :destroy

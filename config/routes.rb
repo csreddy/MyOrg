@@ -1,20 +1,24 @@
 Myorg::Application.routes.draw do
 
+  root :to => 'employees#index'
+
   get "addresses/show_map"
 
-  get "employees/show_map"
-
-  get "phone/add_phone"
-
-  root :to => 'employees#index'
 
   resources :roles  
 
+  resources :departments
+  
   resources :employees do
     get :autocomplete_employee_name, :on => :collection
   end
-     
-  resources :departments
+  
+  match '/chart' => 'employees#chart', :as => :chart
+  
+  match '/org_chart' => 'employees#org_chart', :as => :org_chart
+  
+  
+
 
 
   # The priority is based upon order of creation:

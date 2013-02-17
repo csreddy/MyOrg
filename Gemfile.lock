@@ -42,6 +42,7 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
+    awesome_print (1.1.0)
     better_errors (0.3.2)
       coderay (>= 1.0.0)
       erubis (>= 2.7.0)
@@ -68,6 +69,7 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     gmaps4rails (1.5.6)
+    google_visualr (2.1.5)
     gravtastic (3.2.6)
     hike (1.2.1)
     hirb (0.7.0)
@@ -167,6 +169,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (>= 2.5.0)
+  awesome_print
   better_errors
   binding_of_caller
   bootstrap-datepicker-rails
@@ -175,6 +178,7 @@ DEPENDENCIES
   country_select
   faker
   gmaps4rails
+  google_visualr (~> 2.1.0)
   gravtastic
   hirb
   jquery-rails

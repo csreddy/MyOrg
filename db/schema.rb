@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117070219) do
+ActiveRecord::Schema.define(:version => 20130216195413) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street_name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130117070219) do
     t.date     "joined_on"
     t.date     "dob"
     t.string   "personal_email"
+    t.integer  "manager_id"
   end
 
   create_table "employees_connections", :id => false, :force => true do |t|

@@ -16,7 +16,6 @@
 //= require autocomplete-rails
 //= require_tree .
 
-
 $('#employee_dob').datepicker({"format": "yyyy-mm-dd", "autoclose": true});
 
 $('#employee_joined_on').datepicker({"format": "yyyy-mm-dd", "autoclose": true});

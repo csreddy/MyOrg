@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='http://www.google.com/jsapi'></script>
     <title><%= content_for?(:title) ? yield(:title) : "MyOrg" %></title>
     <%= csrf_meta_tags %>
 
@@ -53,7 +54,7 @@
               <li><%= link_to "Roles", roles_path  %></li>
 			  <li><%= link_to "Departments", departments_path  %></li>
 			  <li><%= link_to "Map View",  addresses_show_map_path  %></li>
-              <li><%= link_to "Org Chart", "#"  %></li>
+              <li><%= link_to "Org Chart", org_chart_path  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -71,9 +72,7 @@
 			  <% @departments.each do |department| %>
 			  <li><%= link_to department.name, department_path(department) %></li>
 			  <% end %>
-			  <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+			  
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

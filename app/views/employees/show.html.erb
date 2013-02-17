@@ -53,7 +53,7 @@
 </dl>
 	   <dl class="dl-horizontal">
  	  <dt><strong><%= model_class.human_attribute_name(:reports_to) %>:</strong></dt>
-	   <%= render :partial => 'manager' %>
+	   <dd><%= render :partial => 'manager' %></dd>
 
 	  </dl>
    <dl class="dl-horizontal">
@@ -65,10 +65,20 @@
   <dl class="dl-horizontal">
  <dt><strong><%= model_class.human_attribute_name(:phones) %>:</strong></dt>
  <%= render :partial => 'phones' %>
-
  </dl>
-    </td>
+    
+ <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:subordinates) %>:</strong></dt>
+ <dd>
+	 <%= render :partial => 'subordinates' %>
+ </dd>	  
+</dl> 
+  
+	
+	</td>
+	
   </tr>
+  
 </table>
 
 <div class="form-actions">

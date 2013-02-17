@@ -37,12 +37,10 @@ end
 
 def employee_manager(employee)
   @managers = employee.employees
-  if @managers.empty?
+  if employee.manager.nil?
     "manager not assigned"   
   else
-    @managers.collect do |manager|
-      manager.name
-    end
+   employee.manager.name
   end
 end
 
@@ -70,6 +68,8 @@ def employee_address(employee)
 end 
 end
 
+
+
 def autocomplete
   @employees= Employee.select("id, name").where("name LIKE ?", "#{params[:term]}%").limit(20)
   @hash = []
@@ -80,6 +80,7 @@ def autocomplete
   render :json => @hash
 
   end
+  
   
   
 

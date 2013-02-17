@@ -64,3 +64,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
 end
+gem "awesome_print"
+gem "google_visualr", "~> 2.1.0"

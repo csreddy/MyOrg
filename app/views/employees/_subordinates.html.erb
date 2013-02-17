@@ -1,0 +1,7 @@
+ <% if @employee.subordinates.empty? %>
+<span class="label label-info"> <%= "no subordinates" %></span>
+ <% else %>
+ <% @employee.subordinates.each do |s| %>
+<dd><%= link_to s.name, employee_path(s) %></dd>
+<% end %>
+<% end %>

@@ -5,12 +5,15 @@
   <%= f.input :joined_on, :as => :string, :input_html => { :class => 'span3' } %>
   <%= f.association :department %>
   <%= f.association :roles %>
-  <%= f.association :employees, :label => "Reports to" %>
+  <%#= f.association :employees,  :label => "Reports to" %>
+   <%= f.association :manager,  :label => "Reports to" %>
   <%= f.input :email, :label => "Work Email", :placeholder => 'Use valid email address' %>
   <%= f.input :personal_email, :placeholder => 'Use valid email address' %>
   
   <div class="control-group">
-	  <%= @employee.address.validate_address unless Employee.new.present? %>
+	<div class="controls">
+	<p class="text-error"><%= @employee.address.errors.first[1] unless @employee.address.errors.empty? %></p>
+  </div>
   <label class="control-label" for="address">Address</label>
   <div class="controls">
   	<%= f.simple_fields_for :address do |a| %>

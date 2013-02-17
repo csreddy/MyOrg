@@ -45,13 +45,10 @@
 				<% end %> 
 		</td>
 			<td>
-		  	  	 <% @manager = employee.employees %>
-		  	     <% if @manager.empty? %>
+		  	     <% if employee.manager.nil? %>
 				<span class="label label-info"> <%= "not assigned" %></span>
 				 <% else %>
-				 <% @manager.each do |m| %>
-		 	<dd>	<%= link_to m.name, employee_path(m) %></dd>
-		  	    <% end %>
+		 	<dd>	<%= link_to employee.manager.name, employee_path(employee.manager) %></dd>
 				<% end %>
 			</td>
 			
