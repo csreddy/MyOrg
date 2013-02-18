@@ -13,7 +13,7 @@ Highlights of the app:
 
 == Getting Started
 1. Checkout the source code
-    <tt>git clone https://github.com/csreddy/MyOrg.git</tt>
+     git clone https://github.com/csreddy/MyOrg.git
     
 2. Change directory to <tt>myorg</tt>
     <tt>cd myorg</tt> 
