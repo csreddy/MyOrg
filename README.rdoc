@@ -6,12 +6,9 @@ your organization's employees details all in one place
 Highlights of the app:
 1. Uses the awesome Twitter Bootstrap for app theme & styling
 2. You can create/edit/delete Departments, Roles & Employees
-3. You can attach a photo for each employee which shows up in employee details & index
-	page
-4. Displays geographic distribution of employees on Google Maps across the US based on 
-	their home address
+3. You can attach a photo for each employee which shows up in employee details & index page
+4. Displays geographic distribution of employees on Google Maps across the US based on their home address
 5. Shows the Organization Chart	
-
 
 
 == Getting Started
@@ -25,3 +22,5 @@ Highlights of the app:
     <tt>rake db:populate</tt>       
 
 3. Go to http://localhost:3000
+
+4. Thats it!
