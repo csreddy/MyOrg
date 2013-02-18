@@ -24,3 +24,7 @@ Highlights of the app:
 3. Go to http://localhost:3000
 
 4. Thats it!
+
+* Note: You will not see any pins on the map after populating the db because the populator gem adds fake addresses
+which obviously cannot me mapped. In order to see the pin you need to edit the employee details and 
+update with real addresses.
