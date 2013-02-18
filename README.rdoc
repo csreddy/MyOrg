@@ -16,16 +16,16 @@ Highlights of the app:
      git clone https://github.com/csreddy/MyOrg.git
     
 2. Change directory to <tt>myorg</tt>
-    <tt>cd myorg</tt> 
+     cd myorg
        
 3. Run bundle command
-    <tt>bundle install</tt>       
+     bundle install
           
 4. Run rake task to populate db
-    <tt>rake db:populate</tt>       
+    rake db:populate    
 
 5. Start the server
-    <tt>rails s</tt>
+    rails s
     
 6. Go to http://localhost:3000
 
