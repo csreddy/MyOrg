@@ -1,12 +1,13 @@
 <%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :bio, :input_html => { :rows => 5, :class => 'input-xxlarge' } %>
+  <%= f.input :sex, collection: ["Male", "Female"] %>
   <%= f.input :dob, :as => :string, :label => "Date of birth", :input_html => { :class => 'span3' } %>
   <%= f.input :joined_on, :as => :string, :input_html => { :class => 'span3' } %>
-  <%= f.association :department %>
-  <%= f.association :roles %>
+  <%= f.association :department,  collection: Department.all(order: 'name') %>
+  <%= f.association :roles, collection: Role.all(order: 'title') %>
   <%#= f.association :employees,  :label => "Reports to" %>
-   <%= f.association :manager,  :label => "Reports to" %>
+   <%= f.association :manager,  collection: Employee.where("id != ?", @employee.id).order("name"), :label => "Reports to" %>
   <%= f.input :email, :label => "Work Email", :placeholder => 'Use valid email address' %>
   <%= f.input :personal_email, :placeholder => 'Use valid email address' %>
   

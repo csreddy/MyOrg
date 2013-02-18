@@ -11,6 +11,10 @@
 #  updated_at  :datetime         not null
 #  employee_id :integer
 #  zip         :string(255)
+#  latitude    :float
+#  longitude   :float
+#  gmaps       :boolean
+#  country     :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

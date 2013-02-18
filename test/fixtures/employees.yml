@@ -17,6 +17,9 @@
 #  department_id       :integer
 #  joined_on           :date
 #  dob                 :date
+#  personal_email      :string(255)
+#  manager_id          :integer
+#  sex                 :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

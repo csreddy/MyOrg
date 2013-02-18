@@ -17,6 +17,9 @@
 #  department_id       :integer
 #  joined_on           :date
 #  dob                 :date
+#  personal_email      :string(255)
+#  manager_id          :integer
+#  sex                 :string(255)
 #
 
 class Employee < ActiveRecord::Base
@@ -30,7 +33,7 @@ class Employee < ActiveRecord::Base
             #  http://s3.amazonaws.com/twitvid-channel-avatars/4f8daf56e6438.1.jpg  
             #  http://www.techinasia.com/techinasia/wp-content/uploads/2009/11/facebook-avatar.png
    
-  attr_accessible :name, :role, :role_ids, :email, :personal_email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes, :manager_id
+  attr_accessible :name, :sex, :role, :role_ids, :email, :personal_email, :bio, :avatar, :employee_ids, :address, :department_id, :dob, :joined_on, :address_attributes, :phones_attributes, :manager_id
   
   validates :name, 
             :presence => true, 
