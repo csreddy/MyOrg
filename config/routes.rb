@@ -2,9 +2,6 @@ Myorg::Application.routes.draw do
 
   root :to => 'employees#index'
 
-  get "addresses/show_map"
-
-
   resources :roles  
 
   resources :departments
@@ -13,7 +10,8 @@ Myorg::Application.routes.draw do
     get :autocomplete_employee_name, :on => :collection
   end
   
-  match '/chart' => 'employees#chart', :as => :chart
+
+  get "addresses/show_map"
   
   match '/org_chart' => 'employees#org_chart', :as => :org_chart
   
