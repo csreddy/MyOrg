@@ -15,15 +15,21 @@ Highlights of the app:
 1. Checkout the source code
     <tt>git clone https://github.com/csreddy/MyOrg.git</tt>
     
-2. Change directory to <tt>myorg</tt> and start the web server:
-       <tt>cd myorg; rails server</tt> (run with --help for options)
+2. Change directory to <tt>myorg</tt>
+    <tt>cd myorg</tt> 
        
+3. Run bundle command
+    <tt>bundle install</tt>       
+          
 4. Run rake task to populate db
     <tt>rake db:populate</tt>       
 
-3. Go to http://localhost:3000
+5. Start the server
+    <tt>rails s</tt>
+    
+6. Go to http://localhost:3000
 
-4. Thats it!
+ Thats it!
 
 * Note: You will not see any pins on the map after populating the db because the populator gem adds fake addresses
 which obviously cannot me mapped. In order to see the pin you need to edit the employee details and 
