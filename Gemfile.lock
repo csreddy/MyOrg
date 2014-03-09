@@ -100,11 +100,11 @@ GEM
     json (1.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
-    less (2.4.0)
-      commonjs (~> 0.2.7)
-    less-rails (2.4.2)
+    less (2.3.3)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
       actionpack (>= 3.1)
-      less (~> 2.4.0)
+      less (~> 2.3.1)
     libv8 (3.16.14.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -212,7 +212,7 @@ DEPENDENCIES
   hirb
   jquery-rails
   json
-  less-rails
+  less-rails (= 2.3.3)
   meta_request
   meta_search
   paperclip!
