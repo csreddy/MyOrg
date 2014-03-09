@@ -39,7 +39,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'mysql2'
+#gem 'mysql2'
 gem 'simple_form'
 gem 'hirb'
 gem 'gravtastic'
@@ -56,7 +56,7 @@ gem 'meta_search'
 gem 'rails3-jquery-autocomplete'
 gem 'bootstrap-datepicker-rails'
 gem 'annotate', ">=2.5.0"
-gem 'gmaps4rails'
+gem 'gmaps4rails',  "~> 1.5.6"
 gem 'country_select'
 gem 'json'
 group :development do

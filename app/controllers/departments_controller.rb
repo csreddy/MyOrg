@@ -16,7 +16,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
-    @search = Department.search(params[:search])
+    @search = Department.metasearch(params[:search])
     @department = Department.find(params[:id])
 
     respond_to do |format|
